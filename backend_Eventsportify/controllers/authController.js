@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { sendEmail } = require("../utils/mailer");
 const { generateOTP } = require("../utils/otpGenerator");
-const crypto = require("crypto");
+// const crypto = require("crypto");
 
 // l'inscription d'un utilisateur
 exports.register = async (req, res) => {
