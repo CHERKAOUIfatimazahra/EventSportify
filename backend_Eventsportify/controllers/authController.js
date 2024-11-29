@@ -6,7 +6,7 @@ const { generateOTP } = require("../utils/otpGenerator");
 
 // l'inscription d'un utilisateur
 exports.register = async (req, res) => {
-  const { name, email, password, phoneNumber, address } = req.body;
+  const { name, email, password, phoneNumber} = req.body;
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);

@@ -26,4 +26,18 @@ router.delete(
 // get all events
 router.get("/", eventController.getAllEvents);
 
+// get all events by organizer
+router.get(
+  "/organizer",
+  verifyToken,
+  isOrganizer,
+  eventController.getAllEventsByOrganizer
+);
+
+// get event by id
+router.get("/:id", eventController.getEventById);
+
+
 module.exports = router;
+
+
