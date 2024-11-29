@@ -1,5 +1,4 @@
 const Event = require("../models/Event");
-const User = require("../models/User");
 
 // creation d'evenement
 exports.createEvent = async (req, res) => {
@@ -12,11 +11,9 @@ exports.createEvent = async (req, res) => {
       location,
       price,
       ticketsNumber,
-      image,
-      organizer,
     } = req.body;
 
-    // Vérification les champs
+    // Vérification des champs
     if (
       !title ||
       !description ||
@@ -38,11 +35,10 @@ exports.createEvent = async (req, res) => {
       location,
       price,
       ticketsNumber,
-      image,
       organizer: req.user._id,
     });
 
-    await newEvent.save(); 
+    await newEvent.save();
 
     res.status(201).json({ newEvent, message: "Evenement cree avec succes" });
   } catch (error) {
@@ -96,7 +92,7 @@ exports.deleteEvent = async (req, res) => {
 // get all events
 exports.getAllEvents = async (req, res) => {
   try {
-    const events = await Event.find().populate("organizer");
+    const events = await Event.find();
     res
       .status(200)
       .json({
@@ -110,3 +106,45 @@ exports.getAllEvents = async (req, res) => {
     });
   }
 };
+
+// get all events by organizer
+exports.getAllEventsByOrganizer = async (req, res) => {
+  try {
+    const events = await Event.find({ organizer: req.user._id });
+
+    if(events.length === 0) {
+      return res.status(404).json({ message: "Aucun evenement trouve" });
+    }
+
+    res
+      .status(200)
+      .json({
+        events,
+        message: "Tous les evenements de l'organisateur ont ete obtenus avec succes",
+      });
+  } catch (error) {
+    res.status(500).json({
+      message: "Erreur lors de la recuperation de tous les evenements de l'organisateur",
+      error: error.message,
+    });
+  }
+};
+
+// get event by id
+exports.getEventById = async (req, res) => {
+  try {
+    const event = await Event.findById(req.params.id);
+    if (!event) {
+      return res.status(404).json({ message: "Evenement non trouve" });
+    }
+    res.status(200).json({ event, message: "Evenement obtenu avec succes" });
+  } catch (error) {
+    res.status(500).json({
+      message: "Erreur lors de la recuperation de l'evenement",
+      error: error.message,
+    });
+  }
+};
+
+
+
