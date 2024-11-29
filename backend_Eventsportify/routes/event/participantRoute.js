@@ -14,7 +14,7 @@ router.post(
 
 // get all participants for a specific event
 router.get(
-  "/participants/:id",
+  "/event/:id",
   verifyToken,
   isOrganizer,
   participantFunctions.getParticipants
@@ -27,5 +27,22 @@ router.delete(
   isOrganizer,
   participantFunctions.deleteParticipant
 );
+
+// update a specific participant
+router.put(
+  "/update/:id",
+  verifyToken,
+  isOrganizer,
+  participantFunctions.updateParticipant
+);
+
+// get a specific participant
+router.get(
+  "/:id",
+  verifyToken,
+  isOrganizer,
+  participantFunctions.getParticipantById
+);
+
 
 module.exports = router;
