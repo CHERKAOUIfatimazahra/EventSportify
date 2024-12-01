@@ -142,7 +142,7 @@ function CreateParticipant() {
           }
         );
         toast.success("Participant created successfully!");
-        navigate("/dashboard");
+        navigate(-1);
       } catch (error) {
         console.error(error.response?.data || error.message);
         toast.error("Failed to create participant.");
