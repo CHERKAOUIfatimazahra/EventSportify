@@ -70,7 +70,8 @@ const Home = () => {
           Discover Exciting Sports Events
         </h1>
         <p className="text-xl mb-8 max-w-2xl mx-auto">
-          Join, Compete, and Connect with Athletes Across Various Sports
+          Join, Compete, and Connect with EventSportify - The Ultimate Sports
+          Event Platform
         </p>
       </div>
     </div>
@@ -80,10 +81,10 @@ const Home = () => {
     <div className="container mx-auto px-4 py-16">
       <div className="text-center mb-12">
         <h2 className="text-4xl font-bold text-indigo-900 mb-4">
-          Upcoming Challenges
+          Upcoming Events
         </h2>
         <p className="text-indigo-700 max-w-2xl mx-auto">
-          Explore Extraordinary Athletic Experiences Across France
+          Explore the exciting sports events happening around the world
         </p>
       </div>
 
