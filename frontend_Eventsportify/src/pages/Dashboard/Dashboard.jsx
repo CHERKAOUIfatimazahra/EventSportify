@@ -12,7 +12,7 @@ import {
   Home,
   Settings,
   BarChart2,
-  User,
+  Ticket,
   LogOut,
   Menu,
 } from "lucide-react";
@@ -183,25 +183,32 @@ function Dashboard() {
                   <thead className="bg-blue-100 text-blue-800">
                     <tr>
                       <th className="px-4 py-3 text-left">Title</th>
-                      <th className="px-4 py-3 text-left">Description</th>
+                      {/* <th className="px-4 py-3 text-left">Description</th> */}
                       <th className="px-4 py-3 text-left">
-                        <Calendar className="inline mr-2" size={16} />
+                        <Calendar className="inline mr-2" size={13} />
                         Start Date
                       </th>
                       <th className="px-4 py-3 text-left">
-                        <MapPin className="inline mr-2" size={16} />
+                        <MapPin className="inline mr-2" size={13} />
                         Location
                       </th>
                       <th className="px-4 py-3 text-left">
-                        <DollarSign className="inline mr-2" size={16} />
+                        <DollarSign className="inline mr-2" size={13} />
                         Price
+                      </th>
+                      <th className="px-4 py-3 text-left">
+                        <Ticket className="inline mr-2" size={13} />
+                        tickets
                       </th>
                       <th className="px-4 py-3 text-left">Status</th>
                       <th className="px-4 py-3 text-left">
-                        <Users className="inline mr-2" size={16} />
+                        <Users className="inline mr-2" size={13} />
                         Participants
                       </th>
-                      <th className="px-4 py-3 text-center">Actions</th>
+                      <th className="px-4 py-3 text-center">
+                        <Settings className="inline mr-2" size={13} />
+                        Actions
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -213,15 +220,27 @@ function Dashboard() {
                         <td className="px-4 py-3 font-semibold">
                           {event.title}
                         </td>
-                        <td className="px-4 py-3 truncate max-w-xs">
+                        {/* <td className="px-4 py-3 truncate max-w-xs">
                           {event.description}
+                        </td> */}
+                        <td className="px-4 py-3 text-sm text-gray-800">
+                          {new Date(event.startDate).toLocaleDateString(
+                            "en-US",
+                            {
+                              year: "numeric",
+                              month: "long",
+                              day: "numeric",
+                            }
+                          )}
                         </td>
-                        <td className="px-4 py-3">{event.startDate}</td>
-                        <td className="px-4 py-3 flex items-center">
+                        <td className="px-4 py-3">
                           <MapPin className="mr-2 text-blue-500" size={16} />
                           {event.location}
                         </td>
                         <td className="px-4 py-3">${event.price}</td>
+                        <td className="px-4 py-3">
+                          {event.participants.length} / {event.ticketsNumber}
+                        </td>
                         <td className="px-4 py-3">
                           <span
                             className={`
