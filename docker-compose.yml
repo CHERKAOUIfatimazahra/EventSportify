@@ -22,5 +22,23 @@ services:
     volumes:
       - ./backend_Eventsportify:/usr/src/app
       - /usr/src/app/node_modules
-    env_file:
-      - ./backend_Eventsportify/.env
+    environment:
+      - MONGO_URI=mongodb://root:password@mongo:27017/eventsportify?authSource=admin
+    # env_file:
+    #   - ./backend_Eventsportify/.env
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:6.0
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+
+volumes:
+  mongo-data:
