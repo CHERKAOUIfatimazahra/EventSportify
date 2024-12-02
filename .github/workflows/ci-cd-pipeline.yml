@@ -28,7 +28,7 @@ jobs:
       - name: Run Backend Tests
         run: |
           cd ./backend_Eventsportify
-          npm test
+          npx jest
 
   build-and-push:
     needs: test
