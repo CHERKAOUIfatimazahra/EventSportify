@@ -1,18 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  PlusCircle,
-  Edit2,
-  Trash2,
-  Calendar,
-  MapPin,
-  Clock,
-  Users,
-  Trophy,
-  DollarSign,
-  Home,
-  Settings,
-  BarChart2,
-  Ticket,
+import { PlusCircle, Edit2, Trash2, Calendar, MapPin, Clock, Users, Trophy, DollarSign, Home, Settings, BarChart2, Ticket,
   LogOut,
   Menu,
 } from "lucide-react";
