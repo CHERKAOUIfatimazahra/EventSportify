@@ -4,7 +4,16 @@ const user = require("./User");
 const eventSchema = new mongoose.Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
-  startDate: { type: Date, required: true },
+  startDate: {
+    type: Date,
+    required: true,
+    validate: {
+      validator: function (v) {
+        return v > Date.now();
+      },
+      message: "Start date must be in the future!",
+    },
+  },
   endDate: {
     type: Date,
     required: true,
